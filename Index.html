@@ -1,0 +1,170 @@
+// Ceci est une fonction pour obtenir la liste des matchs de football en Europe ce soir, avec images
+// Utilisé pour le site cle access
+
+/**
+ * Retourne une liste fictive de matchs de football à travers l'Europe pour ce soir,
+ * chaque match ayant une image illustrative.
+ * Utilisé par le site cle access.
+ * @returns {Array<Object>} Liste des matchs européens de ce soir avec images
+ */
+function obtenirMatchsEuropeensDeCeSoir() {
+  return [
+    {
+      competition: 'Premier League',
+      pays: 'Angleterre',
+      equipe1: 'Arsenal',
+      equipe2: 'Liverpool',
+      heure: '21:00',
+      jour: 'Ce soir',
+      site: 'cle access',
+      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      competition: 'Liga',
+      pays: 'Espagne',
+      equipe1: 'FC Barcelone',
+      equipe2: 'Atletico Madrid',
+      heure: '21:00',
+      jour: 'Ce soir',
+      site: 'cle access',
+      image: 'https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      competition: 'Bundesliga',
+      pays: 'Allemagne',
+      equipe1: 'RB Leipzig',
+      equipe2: 'Bayer Leverkusen',
+      heure: '20:30',
+      jour: 'Ce soir',
+      site: 'cle access',
+      image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      competition: 'Serie A',
+      pays: 'Italie',
+      equipe1: 'Inter Milan',
+      equipe2: 'Naples',
+      heure: '20:45',
+      jour: 'Ce soir',
+      site: 'cle access',
+      image: 'https://images.unsplash.com/photo-1505843279827-4b522fae12fa?auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      competition: 'Ligue 1',
+      pays: 'France',
+      equipe1: 'Lyon',
+      equipe2: 'Monaco',
+      heure: '21:00',
+      jour: 'Ce soir',
+      site: 'cle access',
+      image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=400&q=80'
+    }
+  ];
+}
+
+// Formulaire de connexion (login) pour cle access
+// Utilise React (suppose que React est importé dans le projet)
+
+import React, { useState } from 'react';
+
+function FormulaireLogin({ onLogin }) {
+  const [email, setEmail] = useState('');
+  const [motDePasse, setMotDePasse] = useState('');
+  const [erreur, setErreur] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Exemple simple de validation
+    if (email.trim() === '' || motDePasse.trim() === '') {
+      setErreur('Veuillez remplir tous les champs.');
+      return;
+    }
+    setErreur('');
+    // Appel de la fonction de connexion passée en props
+    if (onLogin) {
+      onLogin({ email, motDePasse });
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{
+      maxWidth: '350px',
+      margin: '32px auto',
+      background: '#fff',
+      borderRadius: '12px',
+      boxShadow: '0 2px 12px rgba(30,41,59,0.08)',
+      padding: '28px'
+    }}>
+      <h2 style={{textAlign: 'center', color: '#1e293b', marginBottom: '18px'}}>Connexion</h2>
+      {/* Offre de parrainage */}
+      <div style={{
+        background: 'linear-gradient(90deg, #fbbf24 0%, #f59e42 100%)',
+        color: '#1e293b',
+        borderRadius: '8px',
+        padding: '12px',
+        marginBottom: '18px',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: '1.05rem',
+        boxShadow: '0 1px 4px rgba(251,191,36,0.10)'
+      }}>
+        🎁 Offre de parrainage : <br />
+        <span style={{color: '#b91c1c'}}>Une place offerte</span> pour un membre qui nous rejoint !
+      </div>
+      {erreur && <div style={{color: '#ef4444', marginBottom: '12px', textAlign: 'center'}}>{erreur}</div>}
+      <div style={{marginBottom: '16px'}}>
+        <label htmlFor="email" style={{display: 'block', marginBottom: '6px', color: '#475569'}}>Adresse e-mail</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          style={{
+            width: '100%',
+            padding: '10px',
+            borderRadius: '6px',
+            border: '1px solid #cbd5e1',
+            fontSize: '1rem'
+          }}
+          required
+        />
+      </div>
+      <div style={{marginBottom: '20px'}}>
+        <label htmlFor="motDePasse" style={{display: 'block', marginBottom: '6px', color: '#475569'}}>Mot de passe</label>
+        <input
+          type="password"
+          id="motDePasse"
+          value={motDePasse}
+          onChange={e => setMotDePasse(e.target.value)}
+          style={{
+            width: '100%',
+            padding: '10px',
+            borderRadius: '6px',
+            border: '1px solid #cbd5e1',
+            fontSize: '1rem'
+          }}
+          required
+        />
+      </div>
+      <button type="submit" style={{
+        width: '100%',
+        padding: '12px 0',
+        background: 'linear-gradient(90deg, #6366f1 0%, #0ea5e9 100%)',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '8px',
+        fontSize: '1.1rem',
+        fontWeight: 'bold',
+        cursor: 'pointer'
+      }}>
+        Se connecter
+      </button>
+    </form>
+  );
+}
+
+
+
+
+
+
