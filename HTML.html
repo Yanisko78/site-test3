@@ -1,0 +1,102 @@
+// Ceci est le point d'entrée principal du front-end pour "cle access", affichant chaque jour un match de football européen
+
+import React, { useState } from 'react';
+
+function obtenirMatchEuropeenDuJour() {
+  // Liste fictive de matchs de football européens pour chaque jour de la semaine
+  const matchs = [
+    { jour: 'Lundi', competition: 'Premier League', equipe1: 'Manchester United', equipe2: 'Chelsea', heure: '20:00', pays: 'Angleterre' },
+    { jour: 'Mardi', competition: 'Liga', equipe1: 'Real Madrid', equipe2: 'FC Séville', heure: '21:00', pays: 'Espagne' },
+    { jour: 'Mercredi', competition: 'Bundesliga', equipe1: 'Bayern Munich', equipe2: 'Borussia Dortmund', heure: '20:30', pays: 'Allemagne' },
+    { jour: 'Jeudi', competition: 'Serie A', equipe1: 'Juventus', equipe2: 'AC Milan', heure: '20:45', pays: 'Italie' },
+    { jour: 'Vendredi', competition: 'Ligue 1', equipe1: 'PSG', equipe2: 'Marseille', heure: '21:00', pays: 'France' },
+    { jour: 'Samedi', competition: 'Eredivisie', equipe1: 'Ajax', equipe2: 'PSV Eindhoven', heure: '18:00', pays: 'Pays-Bas' },
+    { jour: 'Dimanche', competition: 'Primeira Liga', equipe1: 'Benfica', equipe2: 'Porto', heure: '19:00', pays: 'Portugal' }
+  ];
+  const aujourdHui = new Date().getDay(); // 0 = dimanche, 1 = lundi, ...
+  // Adapter l'index pour que 0 = lundi, 6 = dimanche
+  const index = aujourdHui === 0 ? 6 : aujourdHui - 1;
+  return matchs[index];
+}
+
+function CleAccess() {
+  const matchDuJour = obtenirMatchEuropeenDuJour();
+
+  return (
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%)',
+      fontFamily: 'Segoe UI, sans-serif',
+      padding: '0',
+      margin: '0'
+    }}>
+      <header style={{
+        background: '#1e293b',
+        color: '#fff',
+        padding: '24px 0',
+        textAlign: 'center',
+        boxShadow: '0 2px 8px rgba(30,41,59,0.08)'
+      }}>
+        <h1 style={{margin: 0, fontSize: '2.5rem', letterSpacing: '2px'}}>cle access</h1>
+        <p style={{margin: '8px 0 0 0', fontSize: '1.1rem'}}>Votre portail quotidien du football européen</p>
+      </header>
+      <main style={{
+        maxWidth: '500px',
+        margin: '40px auto',
+        background: '#fff',
+        borderRadius: '16px',
+        boxShadow: '0 4px 24px rgba(30,41,59,0.10)',
+        padding: '32px'
+      }}>
+        <section>
+          <h2 style={{color: '#1e293b', fontSize: '1.5rem'}}>Le match du jour en Europe</h2>
+          <div style={{
+            background: '#f1f5f9',
+            borderRadius: '10px',
+            padding: '20px',
+            marginTop: '16px',
+            marginBottom: '24px',
+            boxShadow: '0 2px 8px rgba(30,41,59,0.04)'
+          }}>
+            <p style={{fontSize: '1.1rem', margin: 0}}>
+              <span role="img" aria-label="drapeau" style={{marginRight: '8px'}}>⚽️</span>
+              <strong>{matchDuJour.jour} ({matchDuJour.competition}, {matchDuJour.pays})</strong>
+            </p>
+            <p style={{fontSize: '1.2rem', margin: '8px 0 0 0'}}>
+              {matchDuJour.equipe1} <span style={{color: '#64748b'}}>vs</span> {matchDuJour.equipe2}
+            </p>
+            <p style={{margin: '8px 0 0 0', color: '#475569'}}>Coup d'envoi : {matchDuJour.heure}</p>
+          </div>
+        </section>
+        <button style={{
+          width: '100%',
+          padding: '14px 0',
+          background: 'linear-gradient(90deg, #6366f1 0%, #0ea5e9 100%)',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '8px',
+          fontSize: '1.1rem',
+          fontWeight: 'bold',
+          cursor: 'pointer',
+          boxShadow: '0 2px 8px rgba(99,102,241,0.10)'
+        }}>
+          Se connecter
+        </button>
+      </main>
+      <footer style={{
+        textAlign: 'center',
+        color: '#64748b',
+        fontSize: '0.95rem',
+        marginTop: '32px',
+        padding: '16px 0'
+      }}>
+        © {new Date().getFullYear()} cle access. Tous droits réservés.
+      </footer>
+    </div>
+  );
+}
+
+export default CleAccess;
+
+
+
